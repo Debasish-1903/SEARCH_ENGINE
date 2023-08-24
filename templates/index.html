@@ -1,0 +1,172 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Algo Search</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #007bff;
+      margin: 20px 0;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+      margin-top: 30px;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    form input {
+      margin: 10px 0;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 70%;
+    }
+
+    input[type="submit"] {
+      padding: 8px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    .results {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .results-box {
+      padding: 15px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+      background-color: white;
+      border-radius: 8px;
+      flex-basis: calc(33.33% - 20px);
+      box-sizing: border-box;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .results-box:hover {
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+      transform: translateY(-5px);
+    }
+
+    .results a {
+      display: block;
+      margin-bottom: 10px;
+      text-decoration: none;
+      color: #007bff;
+      transition: color 0.3s ease;
+    }
+
+    .results a:hover {
+      color: #0056b3;
+    }
+
+    footer {
+      background-color: #222;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      padding: 10px 20px;
+      width: 100%;
+      color: white;
+    }
+
+    footer a {
+      color: #007bff;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #0056b3;
+    }
+
+    .creator {
+      text-align: left;
+    }
+
+    .Footer-Links {
+      text-align: right;
+      flex-grow: 1;
+    }
+  </style>
+</head>
+
+<body>
+    
+    <h1>Algo Search</h1>
+    <div class="form">
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.search.label }}
+        {{ form.search() }}
+        {{ form.submit() }}
+
+
+    </form>
+    <div/>
+
+    {% if results %}
+
+    <div class="results">
+        {% for (result, q_heading) in results %}
+        <div class="results-box">
+          <p>{{ loop.index }}. <a href="{{ result }}" target="_blank">{{ q_heading }}</a></p>
+        </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>Welcome to Algo_Search 😍!</p>
+      {% if search_triggered %}
+          <p>No results found, please try with other related word(s).</p>
+      {% endif %}
+    {% endif %}
+  
+    <footer>
+      <div class="creator">Created by Debasish Das</div>
+      <div class="Footer-Links">
+        <a href="https://www.linkedin.com/in/debasish-das-740752207/" target="_blank">LinkedIn</a> |
+        <a href="mailto:das31debasish@gmail.com">Email</a>
+      </div>
+    </footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
